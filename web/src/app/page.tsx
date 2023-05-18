@@ -7,7 +7,7 @@ export default function Home() {
         <div className="opacity-58 absolute right-0 top-1/2 h-[288px] w-[526px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-700 blur-full" />
 
         {/* Stripes */}
-        <div className="absolute bottom-8 right-1 top-0 w-2 bg-stripes" />
+        <div className="absolute bottom-8 right-2 top-0 w-2 bg-stripes" />
       </div>
 
       {/* Right */}
