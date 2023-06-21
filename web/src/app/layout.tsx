@@ -6,7 +6,6 @@ import {
 } from 'next/font/google'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
-
 const baiJamjuree = BaiJamjuree({
   subsets: ['latin'],
   weight: '700',
@@ -16,7 +15,7 @@ const baiJamjuree = BaiJamjuree({
 export const metadata = {
   title: 'NLW Spacetime',
   description:
-    'Uma cápsula do tempo construída com React, Next.js, TailwindCSS e Typescript.',
+    'Uma cápsula do tempo construída com React, Next.js, TailwindCSS e TypeScript.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
