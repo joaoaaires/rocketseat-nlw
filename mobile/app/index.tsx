@@ -52,8 +52,6 @@ export default function App() {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      console.log(code)
-
       handleGithubOAuthCode(code)
     }
   }, [response])
