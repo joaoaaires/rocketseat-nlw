@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const isAuth = cookies().has('token')
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body
         className={`${roboto.variable} ${baiJamjuree.variable} bg-gray-900 font-sans text-gray-100`}
       >

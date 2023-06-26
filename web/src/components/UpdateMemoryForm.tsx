@@ -3,6 +3,9 @@
 import { Camera } from 'lucide-react'
 import { MediaPicker } from './MediaPicker'
 import { FormEvent } from 'react'
+import { api } from '@/lib/api'
+import Cookie from 'js-cookie'
+import { useRouter } from 'next/navigation'
 
 interface Memory {
   id: string
@@ -13,14 +16,45 @@ interface Memory {
 }
 
 export function UpdateMemoryForm({ memory }: { memory: Memory }) {
+  const router = useRouter()
+
   async function handleUpdateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
 
-    console.log(formData.get('coverUrl'))
-    console.log(formData.get('isPublic'))
-    console.log(formData.get('content'))
+    const fileToUpload = formData.get('coverUrl')
+
+    let coverUrl = ''
+
+    if (fileToUpload && fileToUpload instanceof File) {
+      if (fileToUpload.size) {
+        const uploadFormData = new FormData()
+        uploadFormData.set('file', fileToUpload)
+
+        const uploadResponse = await api.post('/upload', uploadFormData)
+
+        coverUrl = uploadResponse.data.fileUrl
+      }
+    }
+
+    const token = Cookie.get('token')
+
+    await api.put(
+      `/memories/${memory.id}`,
+      {
+        coverUrl: coverUrl || memory.coverUrl,
+        content: formData.get('content'),
+        isPublic: formData.get('isPublic'),
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+
+    router.push('/')
   }
 
   return (

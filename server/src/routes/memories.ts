@@ -98,9 +98,9 @@ export async function memoriesRoutes(app: FastifyInstance) {
         id,
       },
       data: {
-        content,
-        coverUrl,
-        isPublic,
+        content: content ?? memory.content,
+        coverUrl: coverUrl ?? memory.coverUrl,
+        isPublic: isPublic ?? memory.isPublic,
       },
     })
 

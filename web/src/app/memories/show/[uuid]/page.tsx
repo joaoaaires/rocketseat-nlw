@@ -30,6 +30,8 @@ export default async function DetailMemory({
 
   const memory: Memory = response.data
 
+  console.log(memory)
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-16">
       <Link
