@@ -2,8 +2,8 @@
 
 import { ChangeEvent, useState } from 'react'
 
-export function MediaPicker() {
-  const [preview, setPreview] = useState<string | null>(null)
+export function MediaPicker({ url }: { url: string | null }) {
+  const [preview, setPreview] = useState<string | null>(url)
 
   function onFileSelected(event: ChangeEvent<HTMLInputElement>) {
     const { files } = event.target
